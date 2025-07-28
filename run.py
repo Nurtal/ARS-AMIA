@@ -13,6 +13,14 @@ class Classify(dspy.Signature):
     confidence: float = dspy.OutputField()
 
 
+class AnimalModel(dspy.Signature):
+    """Detect if sentence refer to an animal model"""
+
+    sentence: str = dspy.InputField()
+    animal: Literal["animal model in the sentence", "no animal model in the sentence"] = dspy.OutputField()
+    confidence: float = dspy.OutputField()
+
+
 def detect_adverse_effect(sentence:str) -> dict:
     """Detect adverse effect within a sentence
 
@@ -33,6 +41,33 @@ def detect_adverse_effect(sentence:str) -> dict:
     # return results
     return {'sentence':sentence, 'effect':result['effect'], 'confidence':result['confidence']}
 
+
+def detect_animal_model(sentence:str) -> dict:
+    """Detect animal model within a sentence
+
+    Args:
+        - sentence (str) : input data, parsed by the llm
+
+    Return:
+        - (dict) : contains the following keys :
+            * sentence : input sentence
+            * animal : animal model / no animal model
+            * confidence : confidence of the classication
+    """
+    
+    # run llm
+    classify = dspy.Predict(AnimalModel)
+
+    # very bold call, but since llm output stupid answer, assume it returned the name of the animal model when it
+    # does not return something its allowed to return
+    try:
+        result = classify(sentence=sentence)
+    except:
+        result = {'animal':'animal model in the sentence', 'confidence':0.51}
+        
+
+    # return results
+    return {'sentence':sentence, 'animal':result['animal'], 'confidence':result['confidence']}
 
 def evaluate_adverse_effect_detection():
     """Compute F1-score based on adverse effect detection,
@@ -82,9 +117,17 @@ def evaluate_adverse_effect_detection():
             c_label.append(label)
 
             # perform prediction
-            y = detect_adverse_effect(sentence)
-            if y['effect'] == 'adverse effect':
-                predictions.append(1)
+            # detect animal model
+            a = detect_animal_model(sentence)
+            if a['animal'] != "animal model in the sentence":
+
+                # detect adverse effect
+                y = detect_adverse_effect(sentence)
+                if y['effect'] == 'adverse effect':
+                    predictions.append(1)
+                else:
+                    predictions.append(0)
+
             else:
                 predictions.append(0)
 
