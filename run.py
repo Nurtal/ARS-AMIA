@@ -35,7 +35,13 @@ def detect_adverse_effect(sentence:str) -> dict:
 
 
 def evaluate_adverse_effect_detection():
-    """ """
+    """Compute F1-score based on adverse effect detection,
+    create a score.csv file in results folder with F1-score assiciated
+    to comparison with each reviewer and the consensus
+
+    N.B : possible que le score dans les fichiers soit plus complexe que simplement
+    la detection d'un adverse effect (e.g drop animal model & co)
+    """
 
     # init labels array
     r1_label = []
