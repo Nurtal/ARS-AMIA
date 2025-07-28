@@ -22,11 +22,12 @@ def clean_title_data():
                        "Titres":"SENTENCE",
                        "APR":"R1",
                        "CLE":"R2",
-                       "CM":"R2",
+                       "CM":"R3",
                        "Codage définitif":"LABEL",
                        "ID,TITLE":"SENTENCE",
                        "Titre":"SENTENCE",
-                       "Titre ":"SENTENCE"
+                       "Titre ":"SENTENCE",
+                       "Réconciliation":"LABEL"
                    })
         
 

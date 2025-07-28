@@ -1,3 +1,4 @@
 pandas
 openpyxl
 dspy
+scikit-learn
