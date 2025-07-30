@@ -1,0 +1,102 @@
+SENTENCE,R1,R2,R3,LABEL
+"""CONCLUSIONS: Overall, our study results suggest that bivalirudin is effective for the management of HIT and did not show evidence of in-circuit thrombosis""",0.0,0.0,1.0,0.0
+"""In contrast to other blood coagulation factors, deficiency in the protease is not associated with abnormal bleeding from injury sites (hemostasis) in patients or in animals""",0.0,0.0,0.0,0.0
+"""For the past four decades, extracorporeal life support (ECLS) has been used to treat critically ill adult and pediatric patients with cardiac and/or respiratory failure, and there are increasingly numbers of centers worldwide performing ECLS for numerous indications""",0.0,0.0,0.0,0.0
+METHODS: We evaluated 55 patients on extracorporeal membrane oxygenation (ECMO) who received argatroban for more than 72 hours,0.0,0.0,0.0,0.0
+We report a protocol utilizing only anti-factor Xa (anti-Xa) to manage anticoagulation in 22 consecutive ECMO patients,0.0,0.0,0.0,0.0
+SUMMARY: Bivalirudin is a promising alternative anticoagulant for pediatric ECMO patients who have failed UFH,0.0,0.0,0.0,0.0
+"""There was no difference between the two groups in regard to serious bleeding events (22.7% in the UFH group vs 12.5% in the LMWH group, PÂ =Â .31)""",1.0,1.0,1.0,1.0
+"""On the other hand, adverse effects of anticoagulant, thrombocytopenia, platelet dysfunction, acquired von Willebrand syndrome, and hyperfibrinolysis are all established as causes of bleeding""",1.0,1.0,1.0,1.0
+BACKGROUND: To compare the safety and efficacy of low-dose anticoagulation (LA) with that of standardized dose anticoagulation (SA) for patients supported with extracorporeal membrane oxygenation (ECMO),1.0,1.0,1.0,1.0
+A single-center retrospective analysis of pediatric patients requiring ECMO between 2014 and 2018 was performed,0.0,0.0,0.0,0.0
+This alternative anticoagulation strategy leads to significant reduction in dosages of both heparin and protamine,0.0,0.0,0.0,0.0
+"""Within 48 hours, she developed progressive pulmonary failure despite mechanical ventilation, and was placed on ECMO""",0.0,1.0,0.0,0.0
+PATIENTS: Patients with severe acute respiratory syndrome coronavirus 2-related severe acute respiratory distress syndrome requiring venovenous extracorporeal membrane oxygenation therapy with an injected CT scan performed after extracorporeal membrane oxygenation retrieval,0.0,0.0,0.0,0.0
+All the animals died within 4 hours after weaning off the venoarterial bypass circuit on account of pulmonary edema in 2 and cardiac arrest in 4,-1.0,-1.0,-1.0,-1.0
+"""In the remaining five patients, percutaneous venoarterial extracorporeal membrane oxygenation could be established and was maintained for 3-84 h""",0.0,0.0,0.0,0.0
+"""The clinical presentation and management of heparin-induced thrombocytopenia, which is a rare but life-threatening complication of heparin therapy, has not been described in those patients yet""",1.0,1.0,1.0,1.0
+"""The frequency of HIT was 8.2% in the extracorporeal membrane oxygenation subgroup with 268 patients and 0.8% in the hospitalization subgroup with 10,887 patients""",1.0,1.0,1.0,1.0
+"""Anticoagulants that directly inhibit thrombin are associated with similar in-hospital mortality, stroke, and venous thrombosis and do not confer a higher risk of clinical bleeding in comparison to conventional heparin during ECMO for COVID-19.""",1.0,1.0,1.0,1.0
+"""This correlates with an activated partial thromboplastin time of 60 to 80â€‰seconds, which is the anticoagulation target in our center""",0.0,0.0,0.0,0.0
+"""There was no difference in mean oxygenator/circuit change, transfused packed red blood cell, or documented bleeding complications per patient in each arm (pâ€‰=â€‰0.56, 0.43, 0.77, respectively)""",1.0,1.0,1.0,1.0
+"""The median dose of bivalirudin was 0.37 mg/kg/h (interquartile range [IQR] = 0.21-0.56), with a maximum dose of 0.62 mg/kg/h (IQR = 0.33-0.91)""",0.0,0.0,0.0,0.0
+"""Methods: Relevant studies were identified from MEDLINE and Google Scholar database searches through April 23, 2022""",0.0,0.0,0.0,0.0
+"""This is challenging, particularly in patients supported with venovenous extracorporeal membrane oxygenation (VV-ECMO) due to the need for continuous therapeutic anticoagulation""",0.0,0.0,0.0,0.0
+"""Development of the heparin-bonded system will be essential in reducing hemorrhagic complications, but has not yet been clinically proven""",1.0,1.0,1.0,1.0
+Our multimodal monitoring protocol standardized UFH infusion administration and reduced ATIII administration.,0.0,0.0,0.0,0.0
+"""Antithrombin III activity greater than 80% was not associated with bleeding complications (OR = 1.06, 95% CI = 1.01-1.11, p = 0.44)""",1.0,1.0,1.0,1.0
+Patients were separated into two groups based on severity of hemorrhagic complications and transfusion requirements,1.0,1.0,1.0,1.0
+"""Due to variability in anticoagulation, there is a need to standardize anticoagulation with extracorporeal membrane oxygenation.""",1.0,0.0,0.0,0.0
+"""Despite the lack of experience with heart transplantation (HTx) soon after H1N1 infection, HTx was considered as an exit strategy since restoration of cardiac function was considered unlikely""",-1.0,0.0,0.0,0.0
+METHODS: Retrospective observational single centre study of prospectively collected data of consecutive patients receiving VV ECMO therapy for severe respiratory failure and VA ECMO for circulatory failure from January 2006 to December 2016 of the Medical intensive care unit (ICU) of the University Hospital of Regensburg,0.0,0.0,0.0,0.0
+PURPOSE: Extracorporeal membrane oxygenation (ECMO) is employed to support critically ill COVD-19 patients,0.0,0.0,0.0,0.0
+The authors previously demonstrated that heparin immobilized surfaces showed excellent nonthrombogenic properties for extracorporeal membrane oxygenation experiments as long as 168 hr,0.0,-1.0,0.0,-1.0
+A total of 10 circuit changes due to clot formation or oxygen transfer failure were required in six patients (85.7%),0.0,1.0,1.0,1.0
+Management of anticoagulation in neonates who have a developing hemostatic system is vastly different from adults and poses unique challenges,0.0,0.0,0.0,0.0
+"""The band of 110 kD corresponding to C3b was detected only on the control surfaces, which possibly activated complement, and subsequently activated platelets and coagulation""",-1.0,-1.0,-1.0,-1.0
+"""RESULTS: In one patient PFH fell to 120Â mg/dL, but rebounded to close to 500Â mg/dL, only to stabilize between 210 and 300Â mg/dL after the second TPE""",0.0,1.0,0.0,
+" but rebounded to close to 500Â mg/dL, only to stabilize between 210 and 300Â mg/dL after treatment",,,,1.0
+Patients requiring ECMO are a heterogenous group of critically ill patients with cardiac and respiratory failure,0.0,0.0,0.0,0.0
+OBJECTIVE: There is no universally accepted algorithm for anticoagulation in patients on veno-venous extracorporeal membrane oxygenation,0.0,0.0,0.0,0.0
+We show an anticoagulation therapy without bleeding risk based on a plasma protease factor XII function-neutralizing antibody,1.0,0.0,1.0,1.0
+"""Low-dose thrombolytic therapy in the setting of absolute contraindications to thrombolysis allowed for recovery of cardiac function and, ultimately redo OLT in a patient with otherwise little hope of survival.""",0.0,0.0,0.0,0.0
+"""CONCLUSIONS: The study explored hemostatic alterations during ECMO in healthy animal models, which eliminated the confounding under critically ill conditions""",-1.0,-1.0,-1.0,-1.0
+"""However, only FXI elimination completely prevented the increase in thrombin generation driven by MOFs, suggesting MOFs augment thrombin-mediated FXI activation""",-1.0,-1.0,-1.0,-1.0
+The occurrence of both hepatic and renal failure for DTI Only and DTI after Heparin patients was higher than that of Heparin Only patients,1.0,1.0,1.0,1.0
+"""The plasma samples collected daily were tested for PF4-specific Abs using immunoassays to detect immunoglobulin (Ig) G, A, and M isotypes or only IgG""",0.0,0.0,0.0,0.0
+We compared TLP-coated circuits used without systemic anticoagulation to standard of care: heparin-coated circuits with continuous heparin infusion,0.0,0.0,0.0,0.0
+"""During ECLS, inotropes were required more often (23% v 0% P < .01) because hypotension was more common (77% v 33% P < .05)""",1.0,0.0,1.0,0.0
+We conducted a retrospective review of patients who received anticoagulation management directed by ACT results (n = 96) or anti-Xa levels (n = 72) between January 2010 and March 2016,0.0,0.0,0.0,0.0
+"""Further research is warranted on how pump type affects coagulation, taking into account the severity and implications of coagulation complications""",1.0,1.0,1.0,1.0
+Plasma levels of antithrombin (either endogenous or exogenous) were negatively associated with all cytokines,0.0,0.0,0.0,0.0
+There was no significant difference in all-cause mortality risk (OR 0.75 95% CI .52-1.09,1.0,1.0,1.0,1.0
+"""Simultaneously, HIT II was diagnosed as a result of hematology workup for persistent thrombocytopenia""",1.0,1.0,1.0,1.0
+We initiated ECMO and intra-aortic balloon pump therapy during coronary artery bypass grafting and ventricular thrombectomy,0.0,0.0,0.0,0.0
+"""Characterized by elevated plasma-free hemoglobin (PFH), intravascular hemolysis is associated with cytotoxic effects leading to renal replacement therapy (RRT), longer ECMO runs, and mortality""",1.0,1.0,1.0,1.0
+A patient with myocardial failure after repair of an acute type A aortic dissection had acute heparin-induced thrombocytopenia develop during extracorporeal membrane oxygenation,1.0,1.0,1.0,1.0
+"""CONCLUSIONS: Prevalence of HIT among patients under VA-ECMO is extremely low at 0.36% with an associated mortality rate of 33.3%, which appears to be in the same range as that observed in patients treated with VA-ECMO without HIT""",1.0,1.0,1.0,1.0
+"""Mortality was not different with (6/19, 31.6%) or without (89/279, 32.2%) heparin-induced thrombocytopenia in patients on extracorporeal membrane oxygenation (p = 0.79)""",1.0,1.0,1.0,1.0
+BACKGROUND: Microvascular and macrovascular thrombotic events are among the hallmarks of coronavirus disease 2019 (COVID-19),0.0,1.0,0.0,0.0
+Optimal therapeutic targets varied between 43-70 and 60-100 seconds for aPTT and between 150-210 and 180-230 seconds for ACT,0.0,0.0,0.0,0.0
+It was not associated with an increased rate of system exchanges compared to regimes with therapeutic anticoagulation in registry data,0.0,0.0,0.0,0.0
+"""We assessed association between therapeutic anticoagulation administration with unfractionated heparin and outcomes in patients with severe COVID-19 pneumonia, assuming that anticoagulant administration effects are influenced by therapy timing""",0.0,0.0,0.0,0.0
+"""In the last decade, however, we have learned that bleeding complications in the course of extracorporeal membrane oxygenation (ECMO) therapy are common and not occasionally limiting or fatal""",1.0,1.0,1.0,1.0
+RESULTS: The search identified 13 publications relevant to the target (4 cohort studies and 9 case series),0.0,0.0,0.0,0.0
+Pregnant women with mechanical prosthetic heart valves have an increased risk of thrombosis and valve malfunctioning,0.0,1.0,0.0,1.0
+"""METHODS: This single-center, retrospective chart study included all first neonatal and pediatric ECMO runs between 2009 and 2015""",0.0,0.0,0.0,0.0
+"""In 4 cases, the regularly scheduled echoencephalogram was obtained earlier in the day, and the patients were subsequently weaned and decannulated""",0.0,0.0,0.0,0.0
+"""The aim of this study was to assess, in patients undergoing CRRT during venovenous ECMO (vv-ECMO), the efficacy and safety of adding regional citrate anticoagulation (RCA) for CRRT circuit anticoagulation (RCA + UFH group) compared with the sole systemic heparin anticoagulation (UFH group)""",0.0,1.0,1.0,1.0
+"""RESULTS: For the primary analysis, 100 patients received heparin, 10 received bivalirudin, and 43 were transitioned between heparin and bivalirudin""",0.0,0.0,0.0,0.0
+"""After the massive bleeding was stopped, both patients were placed on V-V ECMO and were managed with minimal or no therapeutic anticoagulation for the duration of their course on V-V ECMO""",1.0,0.0,0.0,0.0
+Overall there was 1 bleeding event in the no-bolus group (11.1%) and 7 in the bolus group (30.4%) ( P = 0.26),1.0,1.0,1.0,1.0
+"""The 9 other patients were successfully weaned from ECLS, and 4 were discharged home from the hospital""",0.0,0.0,0.0,0.0
+Drug-induced thrombocytopenia tended to be more frequent in Excluded HIT at the time of HIT suspicion (pâ€‰=â€‰0.073),1.0,1.0,1.0,1.0
+BACKGROUND: Our study sought to investigate the efficacy and safety of bivalirudin versus those of unfractionated heparin (UFH) in patients undergoing extracorporeal membrane oxygenation (ECMO),1.0,1.0,1.0,1.0
+"""In heparin-neutralized plasma, underlying TG patterns, and sensitivity to activated protein C were assessed using calibrated automated thrombogram""",0.0,-1.0,0.0,0.0
+"""Extracorporeal life support (ECLS) devices are used for cardiac and/or pulmonary support as a bridge to recovery, decision, surgery, or transplant in patients with refractory cardio-circulatory or respiratory diseases and provide essential opportunities for organ support and patient survival""",0.0,0.0,0.0,0.0
+"""At 90-days, in-hospital mortality was 50% (DTI) and 61% (UFH), adjusted hazard ratio: 0.81, 95% confidence interval (CI): 0.49-1.32""",1.0,0.0,1.0,1.0
+"""A rare state of acquired hypercoagulability known as heparin-associated or heparin-induced thrombocytopenia and thrombosis (HATT, HITT) exists""",1.0,1.0,1.0,1.0
+"""In this case report, we described a patient with post-traumatic cervical spinal cord injury and severe pulmonary infection who was successfully treated with heparin-free intravenous ECMO.""",0.0,1.0,0.0,0.0
+"""BACKGROUND: Temporary mechanical circulatory support (tMCS) devices are used for patients with severe cardiac or respiratory failure however, these patients are at high risk for clotting and bleeding""",0.0,0.0,0.0,0.0
+"""Compared with UFH, bivalirudin significantly reduced the risk of in-circuit thrombosis (OR = 0.44, 95% CI [0.31-0.61], pÂ =Â 0.000), thrombosis (OR = 0.61, 95% CI [0.45-0.83], p=Â 0.002) and hospital mortality (OR = 0.78, 95% CI [0.61-0.99], pÂ =Â 0.04) and had a positive impact on survival ECMO (OR = 1.50, 95% CI [1.04-2.16], p=Â 0.032)""",0.0,0.0,1.0,1.0
+"""The patient presented with severe coagulopathy and early allograft dysfunction therefore, no systemic heparin was administered and no thrombotic events occurred""",0.0,0.0,0.0,0.0
+Veno-venous extracorporeal membrane oxygenation (V-V ECMO) is used to rescue patients with severe ARDS,0.0,0.0,0.0,0.0
+"""METHODS: PubMed, MEDLINE, the Cochrane Library, and Web of Science were screened for original articles""",0.0,0.0,0.0,0.0
+Optimal anticoagulation monitoring in patients with extracorporeal membrane oxygenation (ECMO) is fundamental to avoid hemorrhagic and thromboembolic complications,1.0,1.0,1.0,1.0
+"""METHODS: This single-center, retrospective study reviewed 28 neonatal and pediatric patients supported on ECMO at a tertiary care hospital between April 1, 2013, and October 31, 2014, who received at least 1 dose of AT during their ECMO course""",0.0,0.0,0.0,0.0
+"""CONCLUSIONS: In this case report, continuous intravenous low molecular weight heparin anticoagulation was used as a safe alternative to ECMO anticoagulation.""",1.0,0.0,1.0,1.0
+"""No patient had an estimated PF4-heparin ratio between 0.7 and 1.4, which is the reported optimal range for PF4-heparin antibody formation""",0.0,0.0,0.0,0.0
+"""Unfortunately, the size, incidence of coagulation complications, and the need for systematic anticoagulation for traditional ECMO devices have prevented widespread use of this lifesaving technology""",1.0,1.0,1.0,1.0
+"""We reviewed our ECMO experience with regard to the diagnosis of intracranial bleeding, and gave particular attention to the technicians' written records""",1.0,0.0,1.0,1.0
+"""In conclusion, implementation of a standardized anticoagulation protocol was associated with improved anticoagulation parameters and a decrease in hematologic and neurologic complications, coagulopathy, renal injury, and blood product administration""",1.0,1.0,1.0,1.0
+"""We hypothesized that surface coating and the """"closed-loop"""" design allow the MiECC to safely run with lower ACT levels and that an ACT level of 300â€‰seconds can be safely applied without thromboembolic complications""",1.0,1.0,1.0,1.0
+"""D-dimer has been used to predict oxygenator failure, but it is a parameter used a few days before oxygenator exchange""",0.0,-1.0,0.0,0.0
+The use of percutaneous ventricular assist devices (VADs) in the acute management of cardiogenic shock is becoming increasingly common,0.0,0.0,0.0,0.0
+"""Here, we present two pediatric cases where bivalirudin was used during acute hemodialysis, followed by a short summary of recent literature.""",0.0,0.0,0.0,0.0
+"""A substantial increase in the pressure across the ECMO oxygenator was identified, and the diagnosis of type II heparin-induced thrombocytopenia was suspected and confirmed""",1.0,1.0,1.0,1.0
+"""When high-dose UFH is inadequate to maintain an anticoagulant effect, the addition of antithrombin concentrate (ATC) is considered""",0.0,0.0,0.0,0.0
+"""METHODS: This retrospective observational study included severe COVID-19 patients requiring mechanical ventilation in a tertiary emergency critical care hospital intensive care unit (ICU) in Japan from May 1, 2020 to September 30, 2021""",0.0,0.0,0.0,0.0
+"""This is a nonmethodological review of English-language reports of therapeutic plasma exchange performed in patients supported by extracorporeal membrane oxygenation, both pediatric and adult, searching six databases, MEDLINE, Clinical Key, GOOGLE SCHOLAR, CINAHL, Cochrane library, and EMBASE.""",0.0,0.0,0.0,0.0
+RESULTS: Five hundred and eighty-four sets of anticoagulation tests and 343 TEG from 100 patients with median age of 26â€‰days were reviewed,-1.0,0.0,0.0,0.0
+CONCLUSION AND RELEVANCE: Anti-Xa monitoring was associated with a lower hazard of bleeding during tMCS compared to an ACT-based protocol,1.0,1.0,1.0,1.0
+"""METHODS: Using the PRISMA guidelines, we systematically searched the Scopus and PubMed databases up to October 2022""",0.0,0.0,0.0,0.0
