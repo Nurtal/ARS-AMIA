@@ -4,6 +4,7 @@ import pandas as pd
 from sklearn.metrics import f1_score
 import os
 import glob
+import re
 
 class Classify(dspy.Signature):
     """Classify adverse effect / no adverse effect from a given sentence."""
@@ -65,9 +66,59 @@ def detect_animal_model(sentence:str) -> dict:
     except:
         result = {'animal':'animal model in the sentence', 'confidence':0.51}
         
-
     # return results
     return {'sentence':sentence, 'animal':result['animal'], 'confidence':result['confidence']}
+
+
+def detect_animal_model_fast(sentence:str) -> dict:
+    """Fast and simple way of detecting animal model in a sentence
+    
+    Args:
+        - sentence (str) : input data, parsed by the llm
+
+    Return:
+        - (dict) : contains the following keys :
+            * sentence : input sentence
+            * animal : animal model / no animal model
+            * confidence : confidence of the classication (always 1.0 in this case)
+    """
+
+    # fast detection
+    target_list = ['rabbit', 'mouse', 'mice']
+    r = 'no animal model'
+    for elt in target_list:
+        if re.search(elt, sentence):
+            r = 'animal model'
+
+    # return results
+    return {'sentence':sentence, 'animal':r, 'confidence':1.0}
+
+
+def detect_adverse_effect_fast(sentence:str) -> dict:
+    """Fast way to preshot obvisous sentence
+    
+    Args:
+        - sentence (str) : input data, parsed by the llm
+
+    Return:
+        - (dict) : contains the following keys :
+            * sentence : input sentence
+            * animal : adverse effect / no adverse effect
+            * confidence : confidence of the classication (always 1.0 in this case)
+     
+    """   
+
+    target_list = ['phase I', 'clinical trial', 'adverse event', 'adverse effect', 'safety']
+    r = 'no adverse effect'
+    for elt in target_list:
+        if re.search(elt, sentence.lower()):
+            r = 'adverse effect'
+
+    # return results
+    return {'sentence':sentence, 'effect':r, 'confidence':1.0}
+            
+
+
 
 def evaluate_adverse_effect_detection():
     """Compute F1-score based on adverse effect detection,
@@ -84,6 +135,14 @@ def evaluate_adverse_effect_detection():
     r3_label = []
     c_label = []
     predictions = []
+
+    # init result folder
+    if not os.path.isdir('results'):
+        os.mkdir('results')
+
+    # init miss match log file
+    miss_log_file = open("results/miss_match.log", "w")
+    miss_log_file.write("SENTENCE,ANIMAL,ADVERSE_EFFECT,PREDICTION,LABEL\n")
 
     # load data
     for data_file in glob.glob("data/clean/*.csv"):
@@ -118,18 +177,33 @@ def evaluate_adverse_effect_detection():
 
             # perform prediction
             # detect animal model
-            a = detect_animal_model(sentence)
+            a = detect_animal_model_fast(sentence)
+            y = {'effect':'NA'}
+            pred = 0
             if a['animal'] != "animal model in the sentence":
 
-                # detect adverse effect
-                y = detect_adverse_effect(sentence)
+                # fast detection approach
+                y = detect_adverse_effect_fast(sentence)
                 if y['effect'] == 'adverse effect':
-                    predictions.append(1)
+                    pred = 1
                 else:
-                    predictions.append(0)
+
+                    # detect adverse effect with llm
+                    y = detect_adverse_effect(sentence)
+                    if y['effect'] != 'no adverse effect':
+                        pred = 1
+                    else:
+                        pred = 0
 
             else:
-                predictions.append(0)
+                pred = 0
+
+            # update predictions
+            predictions.append(pred)
+
+            # log miss match
+            if pred != label:
+                miss_log_file.write(f"{sentence},{a['animal']},{y['effect']},{pred},{label}\n")
 
     # compute F1 - scores
     r1_score = f1_score(r1_label, predictions)
@@ -138,8 +212,6 @@ def evaluate_adverse_effect_detection():
     c_score = f1_score(c_label, predictions)
 
     # save results
-    if not os.path.isdir('results'):
-        os.mkdir('results')
     output_file = open("results/scores.csv", "w")
     output_file.write("EVALUATEUR,F1-SCORE\n")
     output_file.write(f"R1,{r1_score}\n")
@@ -147,6 +219,9 @@ def evaluate_adverse_effect_detection():
     output_file.write(f"R3,{r3_score}\n")
     output_file.write(f"CONSENSUS,{c_score}\n")
     output_file.close()
+
+    # close logs files
+    miss_log_file.close()
     
 
 

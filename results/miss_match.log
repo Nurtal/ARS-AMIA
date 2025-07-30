@@ -1,0 +1,81 @@
+SENTENCE,ANIMAL,ADVERSE_EFFECT,PREDICTION,LABEL
+Phase II trial of imatinib (Gleevec) in patients with metastatic renal cell carcinoma.  ,no animal model,adverse effect,1,0
+Incidence of Clinically Significant (â‰¤10 g/dL) Late Anemia in Elderly Patients with Newly Diagnosed Chronic Myeloid Leukemia Treated with Imatinib.  ,no animal model,no adverse effect,0,1
+Isolated abdominal wound metastasis from a gastrointestinal stromal tumor.  ,no animal model,adverse effect,1,0
+The importance of drug metabolites synthesis: the case-study of cardiotoxic anticancer drugs.  ,no animal model,no adverse effect,0,1
+Insulin resistance is an underlying mechanism of impaired glucose metabolism during nilotinib therapy.  ,no animal model,no adverse effect,0,1
+Long-term outcome of chronic myeloid leukemia patients treated frontline with imatinib.  ,no animal model,adverse effect,1,0
+Subcutaneous tocilizumab for active thyroid eye disease refractory to orbital radiation and systemic steroids in tobacco smokers.  ,no animal model,adverse effect,1,0
+[Efficacy and tolerance of tocilizumab for corticosteroid sparing in giant cell arteritis and aortitis: Experience of Nimes University Hospital about eleven patients].  ,no animal model,no adverse effect,0,1
+Cancellations of elective surgical procedures due to inadequate management of chronic medications.  ,no animal model,adverse effect,1,0
+Tocilizumab in systemic juvenile idiopathic arthritis in a real-world clinical setting: results from 1 year of postmarketing surveillance follow-up of 417 patients in Japan.  ,no animal model,no adverse effect,0,1
+"Interactions of warfarin with COVID-19 vaccine/drugs, monoclonal antibodies, and targeted anticancer agents from real-world data mining.  ",no animal model,no adverse effect,0,1
+Results of ARI-0001 CART19 cell therapy in patients with relapsed/refractory CD19-positive acute lymphoblastic leukemia with isolated extramedullary disease.  ,no animal model,no adverse effect,0,1
+Anti-Interleukin-6 Receptor Tocilizumab for Severe Juvenile Idiopathic Arthritis-Associated Uveitis Refractory to Anti-Tumor Necrosis Factor Therapy: A Multicenter Study of Twenty-Five Patients.  ,no animal model,adverse effect,1,0
+Potential risk of TNF inhibitors on the progression of interstitial lung disease in patients with rheumatoid arthritis.  ,no animal model,no adverse effect,0,1
+Clinical and radiological features of acute-onset diffuse interstitial lung diseases in patients with rheumatoid arthritis receiving treatment with biological agents: importance of Pneumocystis pneumonia in Japan revealed by a multicenter study.  ,no animal model,no adverse effect,0,1
+Management of immunotherapy colitis: Special considerations in the COVID-19 era.  ,no animal model,no adverse effect,0,1
+[Respiratory virus infections after hematopoietic cell transplantation].  ,no animal model,no adverse effect,0,1
+Successful resumption of tocilizumab for rheumatoid arthritis after resection of a pulmonary Mycobacterium avium complex lesion: a case report.  ,no animal model,no adverse effect,0,1
+"Clinical, radiographic and immunogenic effects after 1 year of tocilizumab-based treatment strategies in rheumatoid arthritis: the ACT-RAY study.  ",no animal model,adverse effect,1,0
+Pharmacologic Treatment of Transplant Recipients Infected With SARS-CoV-2: Considerations Regarding Therapeutic Drug Monitoring and Drug-Drug Interactions.  ,no animal model,no adverse effect,0,1
+Sildenafil for pulmonary hypertension: need for evidence generation.  ,no animal model,adverse effect,1,0
+Local therapies to heal the penis: fact or fiction?  ,no animal model,adverse effect,1,0
+"Plasma levels of cAMP, cGMP and CGRP in sildenafil-induced headache.  ",no animal model,no adverse effect,0,1
+Persistent Pulmonary Hypertension in Corrected Valvular Heart Disease: Hemodynamic Insights and Long-Term Survival.  ,no animal model,adverse effect,1,0
+Purinergic contraction of the rat vas deferens in L-NAME-induced hypertension: effect of sildenafil.  ,no animal model,adverse effect,1,0
+"Study on the comparison between Bosentan and Macitentan in the treatment of persistent pulmonary hypertension of the newborns, simultaneously on sildenafil: A randomized double-blinded non-inferiority parallel clinical trial.  ",no animal model,adverse effect,1,0
+Are nitrates safe in patients who use sildenafil? Maybe.  ,no animal model,no adverse effect,0,1
+Sildenafil as treatment for antidepressant-induced sexual dysfunction.  ,no animal model,adverse effect,1,0
+Regorafenib: a guide to its use in advanced gastrointestinal stromal tumor (GIST) after failure of imatinib and sunitinib.  ,no animal model,adverse effect,1,0
+Changing Protein Permeability with Nephron Loss: Evidence for a Human Remnant Nephron Effect.  ,no animal model,adverse effect,1,0
+Dexamethasone-induced insulin resistance is associated with increased connexin 36 mRNA and protein expression in pancreatic rat islets.  ,no animal model,adverse effect,1,0
+Effect of Nintedanib Nanothermoreversible Hydrogel on Neovascularization in an Ocular Alkali Burn Rat Model.  ,no animal model,adverse effect,1,0
+Coadministration of 5% glucose solution and dexamethasone and oxaliplatin-related vascular pain grade: a case study.  ,no animal model,adverse effect,1,0
+Dexamethasone treatment does not ameliorate subglottic ischemic injury in rabbits.  ,animal model,adverse effect,1,0
+Anti-inflammatory effect of pregabalin on acetic acid-induced colitis in the rats.  ,no animal model,adverse effect,1,0
+Local anaesthetic effect of oxyfedrin in animals.  ,no animal model,adverse effect,1,0
+Lidocaine injection into the rat dorsal root ganglion causes neuroinflammation.  ,no animal model,adverse effect,1,0
+Direct Thrombin Inhibition in Extracorporeal Membrane Oxygenation.  ,no animal model,adverse effect,1,0
+[Heparin resistance and antithrombin deficiency].  ,no animal model,no adverse effect,0,1
+The effects of nitric oxide on coagulation and inflammation in ex vivo models of extracorporeal membrane oxygenation and cardiopulmonary bypass.  ,no animal model,adverse effect,1,0
+Anticoagulation practices associated with bleeding and thrombosis in pediatric extracorporeal membrane oxygenation  a multi-center secondary analysis.  ,no animal model,no adverse effect,0,1
+Case Report of Severe Antithrombin Deficiency During Extracorporeal Membrane Oxygenation and Therapeutic Plasma Exchange for Double Lung Transplantation.  ,no animal model,no adverse effect,0,1
+Successful use of bivalirudin as anticoagulant for ECMO in a patient with acute HIT.  ,no animal model,adverse effect,1,0
+Treatment dilemma for survivors of rituximab-induced bowel perforation in the setting of post-transplant lymphoproliferative disorder.  ,no animal model,no adverse effect,0,1
+Case Report: Effective management of adalimumab-induced acquired hemophilia A with the CyDRI protocol.  ,no animal model,no adverse effect,0,1
+Advanced stage nodular lymphocyte predominant Hodgkin lymphoma in children and adolescents: clinical characteristics and treatment outcome - a report from the SFCE & CCLG groups.  ,no animal model,adverse effect,1,0
+Management of post-transplant lymphoproliferative disorder in adult solid organ transplant recipients - BCSH and BTS Guidelines.  ,no animal model,adverse effect,1,0
+B-cell depletion in children with neuroimmunologic conditions: the learning curve.  ,no animal model,adverse effect,1,0
+Rituximab treatment of fibrillary glomerulonephritis.  ,no animal model,adverse effect,1,0
+Successful Treatment of Epstein-Barr Virus Reactivation-associated Transverse Myelitis Following Herpes Zoster with Intravenous Rituximab in a Cord Blood Transplant Recipient.  ,no animal model,no adverse effect,0,1
+Rituximab plus gemcitabine and oxaliplatin (R-GemOx) in refractory/relapsed diffuse large B-cell lymphoma: a real-life study in patients ineligible for autologous stem-cell transplantation.  ,no animal model,adverse effect,1,0
+Unusual cause of hiccup and abdominal pain after gastric variceal obliteration.  ,no animal model,no adverse effect,0,1
+Pulmonary metastasis of hepatocellular carcinoma associated with transarterial chemoembolization.  ,no animal model,no adverse effect,0,1
+Computed tomography of hepatic oil embolism following lymphangiography.  ,no animal model,no adverse effect,0,1
+Novel predictors for immediate puncture site bleed during endoscopic glue injection for gastric varices without using lipiodol.  ,no animal model,no adverse effect,0,1
+Construction and Validation of Prediction Model of Severe Abdominal Pain Post-Transarterial Chemoembolization in Patients with HBV-Associated Primary Liver Cancer.  ,no animal model,no adverse effect,0,1
+Case report: extravasation of lipiodol--a complication of dacryocystography.  ,no animal model,no adverse effect,0,1
+Cerebral Lipiodol Embolism in Hepatocellular Carcinoma Patients Treated with Transarterial Embolization/Chemoembolization.  ,no animal model,no adverse effect,0,1
+[Single center experience over a 5-year period with sequential transarterial chemoembolization (TACE) in the treatment of hepatocellular carcinoma (HCC)].  ,no animal model,no adverse effect,0,1
+Aberrations in pulmonary function due to lymphangiography.  ,no animal model,adverse effect,1,0
+A 5-year experience of lipiodolization: selective regional chemotherapy for 200 patients with hepatocellular carcinoma.  ,no animal model,no adverse effect,0,1
+Treatment of renal-vascular injury by transcatheter embolization: immediate and long-term effects on renal function.  ,no animal model,adverse effect,1,0
+An alternative to product-specific pregnancy registries? PRIM  PRegnancy outcomes Intensive Monitoring.  ,no animal model,no adverse effect,0,1
+Second-line therapy with fingolimod for relapsing-remitting multiple sclerosis in clinical practice: the effect of previous exposure to natalizumab.  ,no animal model,no adverse effect,0,1
+Treatment of neuromyelitis optica and neuromyelitis optica spectrum disorders with rituximab using a maintenance treatment regimen and close CD19 B cell monitoring. A six-year follow-up.  ,no animal model,adverse effect,1,0
+Fingolimod: a novel immunosuppressant for multiple sclerosis.  ,no animal model,no adverse effect,0,1
+"Ocrelizumab in relapsing-remitting multiple sclerosis: a phase 2, randomised, placebo-controlled, multicentre trial.  ",no animal model,no adverse effect,0,1
+Liver and thyroid function and autoimmunity during interferon-beta 1b treatment for multiple sclerosis.  ,no animal model,no adverse effect,0,1
+Comparative Toxicity of Interferon Beta-1a Impurities of Heavy Metal Ions.  ,no animal model,no adverse effect,0,1
+Neutralizing anti-interferon beta antibodies are associated with reduced side effects and delayed impact on efficacy of Interferon-beta.  ,no animal model,no adverse effect,0,1
+Dimethyl fumarate (Tecfidera): a new oral agent for multiple sclerosis.  ,no animal model,no adverse effect,0,1
+Neoadjuvant Capecitabine/Temozolomide for Locally Advanced or Metastatic Pancreatic Neuroendocrine Tumors.  ,no animal model,adverse effect,1,0
+Phase II study of capecitabine plus cisplatin as first-line chemotherapy in advanced biliary cancer.  ,no animal model,adverse effect,1,0
+Phase II study of capecitabine plus cisplatin as first-line chemotherapy in advanced gastric cancer.  ,no animal model,adverse effect,1,0
+A phase II trial of gemcitabine plus capecitabine for metastatic renal cell cancer previously treated with immunotherapy and targeted agents.  ,no animal model,adverse effect,1,0
+Preoperative Modified FOLFIRINOX Treatment Followed by Capecitabine-Based Chemoradiation for Borderline Resectable Pancreatic Cancer: Alliance for Clinical Trials in Oncology Trial A021101.  ,no animal model,adverse effect,1,0
+Resumption or persistence of menstruation after cytotoxic chemotherapy is a prognostic factor for poor disease-free survival in premenopausal patients with early breast cancer.  ,no animal model,adverse effect,1,0
+"A Rupture of a Lung Metastatic Lesion of Colon Cancer, Leading to Pneumothorax Caused by Bevacizumab.  ",no animal model,no adverse effect,0,1
+Efficacy of Chemotherapy in Patients with Unresectable or Metastatic Pancreatic Acinar Cell Carcinoma: Potentially Improved Efficacy with Oxaliplatin-Containing Regimen.  ,no animal model,adverse effect,1,0
+TYMS Gene Polymorphisms in Breast Cancer Patients Receiving 5-Fluorouracil-Based Chemotherapy.  ,no animal model,adverse effect,1,0
