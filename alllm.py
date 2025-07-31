@@ -31,7 +31,7 @@ class TreatmentSafety(dspy.Signature):
     """ """
 
     sentence: str = dspy.InputField()
-    effect: Literal["mention treatment safety", "does not mention treamtment safety"] = dspy.OutputField()
+    effect: Literal["mention treatment safety", "does not mention treatment safety"] = dspy.OutputField()
     confidence: float = dspy.OutputField()
 
 class RiskFactor(dspy.Signature):
@@ -214,18 +214,32 @@ def detect_adverse_effect_fast(sentence:str) -> dict:
     # return results
     return {'sentence':sentence, 'effect':r, 'confidence':1.0}
 
-def evaluate_sentence(sentence:str, treshold:float):
+def compute_sentence_score(sentence:str) -> float:
     """ """
 
     # init var
     sentence_selected = 0
-
-    ad = detect_adverse_effect(sentence) 
-    ts = detect_treatment_safety(sentence) 
-    rf = detect_risk_factor(sentence) 
-    de = detect_drug_effect(sentence)
-
     score = 0
+
+    # run llms
+    try:
+        ad = detect_adverse_effect(sentence) 
+    except:
+        ad = {'effect':'NA'}
+    try:
+        ts = detect_treatment_safety(sentence) 
+    except:
+        ts = {'effect':'NA'}
+    try:
+        rf = detect_risk_factor(sentence) 
+    except:
+        rf = {'effect':'NA'}
+    try:
+        de = detect_drug_effect(sentence)
+    except:
+        de = {'effect':'NA'}
+
+    # compute score
     if ad['effect'] == 'afverse effect':
         score += 1.0 * ad['confidence'] 
     if ts['effect'] == 'mention treatment safety':
@@ -235,15 +249,12 @@ def evaluate_sentence(sentence:str, treshold:float):
     if de['effect'] == 'mention drug effect':
         score += 1.0 * de['confidence'] 
 
-    if score >= treshold:
-        sentence_selected = 1
-
-    # return value
-    return sentence_selected
+    # return score
+    return score
         
     
 
-def evaluate_adverse_effect_detection():
+def evaluate_adverse_effect_detection(model_name, score_treshold):
     """Compute F1-score based on adverse effect detection,
     create a score.csv file in results folder with F1-score assiciated
     to comparison with each reviewer and the consensus
@@ -267,6 +278,10 @@ def evaluate_adverse_effect_detection():
     miss_log_file = open("results/miss_match.log", "w")
     miss_log_file.write("SENTENCE,ANIMAL,ADVERSE_EFFECT,PREDICTION,LABEL\n")
 
+    # init score log file
+    sentence_score_log = open(f"results/allm_{model_name}_scores.csv", "w")
+    sentence_score_log.write(f"SENTENCE,SCORE,PREDICTION,LABEL\n")
+
     # load data
     for data_file in glob.glob("data/clean/*sentences.csv"):
         df = pd.read_csv(data_file)
@@ -289,10 +304,6 @@ def evaluate_adverse_effect_detection():
             r3 = row['R3']        
             label = row['LABEL']
 
-            # call prediction
-            prediction = evaluate_sentence(sentence,1.0) 
-            print(prediction)
-
             # control extracted labels
             if r1 in [0, -1]:
                 r1 = 0
@@ -314,20 +325,15 @@ def evaluate_adverse_effect_detection():
             a = detect_animal_model_fast(sentence)
             y = {'effect':'NA'}
             pred = 0
+            score = 'NA'
             if a['animal'] != "animal model":
 
-                # fast detection approach
-                y = detect_adverse_effect_fast(sentence)
-                if y['effect'] == 'adverse effect':
-                    pred = 1
-                else:
+                # call llms
+                score = compute_sentence_score(sentence) 
 
-                    # detect adverse effect with llm
-                    y = detect_adverse_effect(sentence)
-                    if y['effect'] != 'no adverse effect':
-                        pred = 1
-                    else:
-                        pred = 0
+                # make prediction based on score
+                if score >= score_treshold:
+                    pred = 1
 
             else:
                 pred = 0
@@ -338,6 +344,7 @@ def evaluate_adverse_effect_detection():
             # log miss match
             if pred != label:
                 miss_log_file.write(f"{sentence},{a['animal']},{y['effect']},{pred},{label}\n")
+            sentence_score_log.write(f"{sentence},{score},{pred},{label}\n")
 
     # compute F1 - scores
     r1_score = f1_score(r1_label, predictions)
@@ -346,7 +353,7 @@ def evaluate_adverse_effect_detection():
     c_score = f1_score(c_label, predictions)
 
     # save results
-    output_file = open("results/scores.csv", "w")
+    output_file = open(f"results/alllm_scores_{model_name}_{score_treshold}.csv", "w")
     output_file.write("EVALUATEUR,F1-SCORE\n")
     output_file.write(f"R1,{r1_score}\n")
     output_file.write(f"R2,{r2_score}\n")
@@ -363,10 +370,29 @@ def evaluate_adverse_effect_detection():
 if __name__ == "__main__":
 
     # configure llm
-    lm = dspy.LM("ollama_chat/llama3.2", api_base="http://localhost:11434", api_key="")
+    lm = dspy.LM("ollama_chat/phi3", api_base="http://localhost:11434", api_key="")
     dspy.configure(lm=lm)
 
     
     # x = detect_adverse_effect("NO advesre effect detected for this medication")
 
-    evaluate_adverse_effect_detection()
+    model_list = [
+        'phi3', 
+        'llama3.2', 
+        'mistral', 
+        'qwen3',
+        'deepseek-r1',
+        'phi4',
+        'alfred',
+        'gemma3'
+    ]
+
+    for m in model_list:
+        for x in [0.2,0.3,0.4,0.5,1,1.5,2,2.5,3,3.5,4]:
+
+            # param llm
+            lm = dspy.LM(f"ollama_chat/{m}", api_base="http://localhost:11434", api_key="")
+            dspy.configure(lm=lm)
+
+            # run
+            evaluate_adverse_effect_detection(m, x)

@@ -1,3 +1,4 @@
 data/raw/*.xlsx
 venv/*
 __pycache__/*
+results/*
