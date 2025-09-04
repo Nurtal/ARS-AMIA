@@ -250,19 +250,18 @@ def compute_sentence_score(sentence:str, agent_configuration:dict) -> float:
     # init var
     sentence_selected = 0
     score = 0
-
-
+    
     # run llms
     try:
         ad = detect_generic_effect(sentence, agent_configuration['AE']) 
     except:
         ad = {'effect':'NA'}
     try:
-        ts = detect_generic_safety(sentence, agent_configuration['TS']) 
+        ts = detect_generic_effect(sentence, agent_configuration['TS']) 
     except:
         ts = {'effect':'NA'}
     try:
-        rf = detect_generic_factor(sentence, agent_configuration['RF']) 
+        rf = detect_generic_effect(sentence, agent_configuration['RF']) 
     except:
         rf = {'effect':'NA'}
     try:
@@ -468,16 +467,32 @@ def test_all_agent_configuration():
     for ae_configuration in agent_configuration['AE']:
 
         # setup config
-        agent_run_config = {'AE':agent_configuration['AE'][ae_configuration]}
-        agent_run_config['TS'] = {'TS':agent_configuration['TS'][1]}
-        agent_run_config['RF'] = {'TS':agent_configuration['RF'][1]}
-        agent_run_config['DE'] = {'TS':agent_configuration['DE'][1]}
+        agent_run_config = {}
+        agent_run_config['AE'] = agent_configuration['AE'][ae_configuration]
+        agent_run_config['TS'] = agent_configuration['TS'][1]
+        agent_run_config['RF'] = agent_configuration['RF'][1]
+        agent_run_config['DE'] = agent_configuration['DE'][1]
 
         # run
         output_file = f"agent_benchmark/ae_config_{ae_configuration}_score.csv"
         evaluate_adverse_effect_detection(model, treshold, agent_run_config, output_file)
     
 
+    #---------------------------------------#
+    # Adverse Treatment Safety Optimisation #
+    #---------------------------------------#
+    for ts_configuration in agent_configuration['TS']:
+
+        # setup config
+        agent_run_config = {}
+        agent_run_config['AE'] = agent_configuration['AE'][1]
+        agent_run_config['TS'] = agent_configuration['TS'][ts_configuration]
+        agent_run_config['RF'] = agent_configuration['RF'][1]
+        agent_run_config['DE'] = agent_configuration['DE'][1]
+
+        # run
+        output_file = f"agent_benchmark/ts_config_{ae_configuration}_score.csv"
+        evaluate_adverse_effect_detection(model, treshold, agent_run_config, output_file)
 
 
 if __name__ == "__main__":
