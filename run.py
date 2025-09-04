@@ -229,7 +229,7 @@ def evaluate_adverse_effect_detection():
 if __name__ == "__main__":
 
     # configure llm
-    lm = dspy.LM("ollama_chat/llama3.2", api_base="http://localhost:11434", api_key="")
+    lm = dspy.LM("ollama_chat/qwen3", api_base="http://localhost:11434", api_key="")
     dspy.configure(lm=lm)
 
     

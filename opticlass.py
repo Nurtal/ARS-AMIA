@@ -6,18 +6,21 @@ import os
 import glob
 import re
 
+from typing import List
+
 
 #-------------------------------#
 # LLM & DSPY clacc and concepts #
 #-------------------------------#
 
-# class based on dspy
-class Classify(dspy.Signature):
-    """Classify adverse effect / no adverse effect from a given sentence."""
+def make_generic_classifier(label1: str, label2: str):
+    class Classify(dspy.Signature):
+        """Classify adverse effect / no adverse effect from a given sentence."""
 
-    sentence: str = dspy.InputField()
-    effect: Literal["adverse effect", "no adverse effect"] = dspy.OutputField()
-    confidence: float = dspy.OutputField()
+        sentence: str = dspy.InputField()
+        effect: Literal[label1, label2] = dspy.OutputField()
+        confidence: float = dspy.OutputField()
+    return Classify
 
 
 class AnimalModel(dspy.Signature):
@@ -27,12 +30,14 @@ class AnimalModel(dspy.Signature):
     animal: Literal["animal model", "no animal model"] = dspy.OutputField()
     confidence: float = dspy.OutputField()
 
-class TreatmentSafety(dspy.Signature):
-    """ """
+def make_ts_classifier(label1:str, label2:str):
+    class TreatmentSafety(dspy.Signature):
+        """ """
 
-    sentence: str = dspy.InputField()
-    effect: Literal["mention treatment safety", "does not mention treatment safety"] = dspy.OutputField()
-    confidence: float = dspy.OutputField()
+        sentence: str = dspy.InputField()
+        effect: Literal[label1, label2] = dspy.OutputField()
+        confidence: float = dspy.OutputField()
+    return TreatmentSafety
 
 class RiskFactor(dspy.Signature):
     """ """
@@ -50,7 +55,7 @@ class DrugEffect(dspy.Signature):
 
 
 # function to call dspy 'classifier'
-def detect_adverse_effect(sentence:str) -> dict:
+def detect_adverse_effect(sentence:str, label_list:list) -> dict:
     """Detect adverse effect within a sentence
 
     Args:
@@ -64,14 +69,39 @@ def detect_adverse_effect(sentence:str) -> dict:
     """
     
     # run llm
-    classify = dspy.Predict(Classify)
+    classify = dspy.Predict(make_ae_classifier(label_list[0],label_list[1]))
     result = classify(sentence=sentence)
 
     # return results
     return {'sentence':sentence, 'effect':result['effect'], 'confidence':result['confidence']}
 
 
-def detect_treatment_safety(sentence:str) -> dict:
+
+
+# function to call dspy 'classifier'
+def detect_generic_effect(sentence:str, label_list:list) -> dict:
+    """Detect adverse effect within a sentence
+
+    Args:
+        - sentence (str) : input data, parsed by the llm
+
+    Return:
+        - (dict) : contains the following keys :
+            * sentence : input sentence
+            * effect : can be adverse effect / no adverse effect
+            * confidence : confidence of the classication
+    """
+    
+    # run llm
+    classify = dspy.Predict(make_generic_classifier(label_list[0],label_list[1]))
+    result = classify(sentence=sentence)
+
+    # return results
+    return {'sentence':sentence, 'effect':result['effect'], 'confidence':result['confidence']}
+
+
+
+def detect_treatment_safety(sentence:str, label_list:list) -> dict:
     """Detect treatement safety within a sentence
 
     Args:
@@ -85,7 +115,7 @@ def detect_treatment_safety(sentence:str) -> dict:
     """
     
     # run llm
-    classify = dspy.Predict(TreatmentSafety)
+    classify = dspy.Predict(TreatmentSafety(labels=label_list))
     result = classify(sentence=sentence)
 
     # return results
@@ -214,28 +244,29 @@ def detect_adverse_effect_fast(sentence:str) -> dict:
     # return results
     return {'sentence':sentence, 'effect':r, 'confidence':1.0}
 
-def compute_sentence_score(sentence:str) -> float:
+def compute_sentence_score(sentence:str, agent_configuration:dict) -> float:
     """ """
 
     # init var
     sentence_selected = 0
     score = 0
 
+
     # run llms
     try:
-        ad = detect_adverse_effect(sentence) 
+        ad = detect_generic_effect(sentence, agent_configuration['AE']) 
     except:
         ad = {'effect':'NA'}
     try:
-        ts = detect_treatment_safety(sentence) 
+        ts = detect_generic_safety(sentence, agent_configuration['TS']) 
     except:
         ts = {'effect':'NA'}
     try:
-        rf = detect_risk_factor(sentence) 
+        rf = detect_generic_factor(sentence, agent_configuration['RF']) 
     except:
         rf = {'effect':'NA'}
     try:
-        de = detect_drug_effect(sentence)
+        de = detect_generic_effect(sentence, agent_configuration['DE'])
     except:
         de = {'effect':'NA'}
 
@@ -254,7 +285,7 @@ def compute_sentence_score(sentence:str) -> float:
         
     
 
-def evaluate_adverse_effect_detection(model_name, score_treshold):
+def evaluate_adverse_effect_detection(model_name, score_treshold, agent_configuration, output_file):
     """Compute F1-score based on adverse effect detection,
     create a score.csv file in results folder with F1-score assiciated
     to comparison with each reviewer and the consensus
@@ -329,7 +360,7 @@ def evaluate_adverse_effect_detection(model_name, score_treshold):
             if a['animal'] != "animal model":
 
                 # call llms
-                score = compute_sentence_score(sentence) 
+                score = compute_sentence_score(sentence, agent_configuration) 
 
                 # make prediction based on score
                 if score >= score_treshold:
@@ -353,7 +384,7 @@ def evaluate_adverse_effect_detection(model_name, score_treshold):
     c_score = f1_score(c_label, predictions)
 
     # save results
-    output_file = open(f"results/alllm_scores_{model_name}_{score_treshold}.csv", "w")
+    output_file = open(output_file, "w")
     output_file.write("EVALUATEUR,F1-SCORE\n")
     output_file.write(f"R1,{r1_score}\n")
     output_file.write(f"R2,{r2_score}\n")
@@ -365,29 +396,87 @@ def evaluate_adverse_effect_detection(model_name, score_treshold):
     miss_log_file.close()
     
 
-def test_all_llm():
+def test_all_agent_configuration():
     """ """
 
-    model_list = [
-        'phi3', 
-        'llama3.2', 
-        'mistral', 
-        'qwen3',
-        'deepseek-r1',
-        'phi4',
-        'alfred',
-        'gemma3'
-    ]
+    # init output folder
+    if not os.path.isdir("agent_benchmark"):
+        os.mkdir("agent_benchmark")
 
-    for m in model_list:
-        for x in [0.2,0.3,0.4,0.5,1,1.5,2,2.5,3,3.5,4]:
+    # configure llm
+    model = "qwen3"
+    treshold = 1.5
+    lm = dspy.LM(f"ollama_chat/{model}", api_base="http://localhost:11434", api_key="")
+    dspy.configure(lm=lm)
 
-            # param llm
-            lm = dspy.LM(f"ollama_chat/{m}", api_base="http://localhost:11434", api_key="")
-            dspy.configure(lm=lm)
+    #--------------------#
+    # Load Configuration #
+    #--------------------#
+    agent_configuration = {'AE':{}, 'TS':{}, 'RF':{}, 'DE':{}}
 
-            # run
-            evaluate_adverse_effect_detection(m, x)
+    # load adverse effect configuration
+    data_config = pd.read_csv("data/ressources/ae_labels.csv")
+    for index, row in data_config.iterrows():
+
+        # extract infos
+        id_config = row['ID']
+        label1 = row['LABEL1']
+        label2 = row['LABEL2']
+
+        # update agent configuration
+        agent_configuration['AE'][id_config] = [label1, label2] 
+        
+    # load treatment safety configuration
+    data_config = pd.read_csv("data/ressources/ts_labels.csv")
+    for index, row in data_config.iterrows():
+
+        # extract infos
+        id_config = row['ID']
+        label1 = row['LABEL1']
+        label2 = row['LABEL2']
+
+        # update agent configuration
+        agent_configuration['TS'][id_config] = [label1, label2] 
+        
+    # load risk factor configuration
+    data_config = pd.read_csv("data/ressources/rf_labels.csv")
+    for index, row in data_config.iterrows():
+
+        # extract infos
+        id_config = row['ID']
+        label1 = row['LABEL1']
+        label2 = row['LABEL2']
+
+        # update agent configuration
+        agent_configuration['RF'][id_config] = [label1, label2]
+
+    # load drug effect configuration
+    data_config = pd.read_csv("data/ressources/de_labels.csv")
+    for index, row in data_config.iterrows():
+
+        # extract infos
+        id_config = row['ID']
+        label1 = row['LABEL1']
+        label2 = row['LABEL2']
+
+        # update agent configuration
+        agent_configuration['DE'][id_config] = [label1, label2] 
+
+    #-----------------------------------#
+    # Adverse Effect Agent Optilisation #
+    #-----------------------------------#
+    for ae_configuration in agent_configuration['AE']:
+
+        # setup config
+        agent_run_config = {'AE':agent_configuration['AE'][ae_configuration]}
+        agent_run_config['TS'] = {'TS':agent_configuration['TS'][1]}
+        agent_run_config['RF'] = {'TS':agent_configuration['RF'][1]}
+        agent_run_config['DE'] = {'TS':agent_configuration['DE'][1]}
+
+        # run
+        output_file = f"agent_benchmark/ae_config_{ae_configuration}_score.csv"
+        evaluate_adverse_effect_detection(model, treshold, agent_run_config, output_file)
+    
 
 
 
@@ -400,5 +489,6 @@ if __name__ == "__main__":
     dspy.configure(lm=lm)
     
     # run
-    evaluate_adverse_effect_detection(model, treshold)
+    # evaluate_adverse_effect_detection(model, treshold)
+    test_all_agent_configuration()
 

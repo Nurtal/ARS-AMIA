@@ -2,3 +2,4 @@ data/raw/*.xlsx
 venv/*
 __pycache__/*
 results/*
+agent_benchmark/*
