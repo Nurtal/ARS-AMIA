@@ -1,3 +1,18 @@
 ID,LABEL1,LABEL2
 1,mention treatment safety,does not mention treatment safety
 2,treatement safety,unrelated to treatement safety
+3,treatment safety present,treatment safety absent
+4,treatment safety observed,no treatment safety observed
+5,treatment safety detected,treatment safety not detected
+6,treatment safety reported,no treatment safety reported
+7,treatment safety mentioned,treatment safety not mentioned
+8,mentions treatment safety,does not mention treatment safety
+9,shows treatment safety,shows no treatment safety
+10,with treatment safety,without treatment safety
+11,treatment safety found,treatment safety not found
+12,treatment safety recorded,no treatment safety recorded
+13,treatment safety present in text,treatment safety absent from text
+14,treatment safety identified,treatment safety not identified
+15,treatment safety indicated,treatment safety not indicated
+16,positive for treatment safety,negative for treatment safety
+17,contains treatment safety,does not contain treatment safety

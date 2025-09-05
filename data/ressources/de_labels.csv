@@ -1,3 +1,18 @@
 ID,LABEL1,LABEL2
 1,mention drug effect,does not mention drug effect
 2,drug effect,no drug effect detected
+3,drug effect present,drug effect absent
+4,drug effect observed,no drug effect observed
+5,drug effect detected,drug effect not detected
+6,drug effect reported,no drug effect reported
+7,drug effect mentioned,drug effect not mentioned
+8,mentions drug effect,does not mention drug effect
+9,shows drug effect,shows no drug effect
+10,with drug effect,without drug effect
+11,drug effect found,drug effect not found
+12,drug effect recorded,no drug effect recorded
+13,drug effect present in text,drug effect absent from text
+14,drug effect identified,drug effect not identified
+15,drug effect indicated,drug effect not indicated
+16,positive for drug effect,negative for drug effect
+17,contains drug effect,does not contain drug effect

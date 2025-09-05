@@ -30,54 +30,6 @@ class AnimalModel(dspy.Signature):
     animal: Literal["animal model", "no animal model"] = dspy.OutputField()
     confidence: float = dspy.OutputField()
 
-def make_ts_classifier(label1:str, label2:str):
-    class TreatmentSafety(dspy.Signature):
-        """ """
-
-        sentence: str = dspy.InputField()
-        effect: Literal[label1, label2] = dspy.OutputField()
-        confidence: float = dspy.OutputField()
-    return TreatmentSafety
-
-class RiskFactor(dspy.Signature):
-    """ """
-
-    sentence: str = dspy.InputField()
-    effect: Literal["mention risk factor", "does not mention risk factor"] = dspy.OutputField()
-    confidence: float = dspy.OutputField()
-
-class DrugEffect(dspy.Signature):
-    """ """
-
-    sentence: str = dspy.InputField()
-    effect: Literal["mention drug effect", "does not mention drug effect"] = dspy.OutputField()
-    confidence: float = dspy.OutputField()
-
-
-# function to call dspy 'classifier'
-def detect_adverse_effect(sentence:str, label_list:list) -> dict:
-    """Detect adverse effect within a sentence
-
-    Args:
-        - sentence (str) : input data, parsed by the llm
-
-    Return:
-        - (dict) : contains the following keys :
-            * sentence : input sentence
-            * effect : can be adverse effect / no adverse effect
-            * confidence : confidence of the classication
-    """
-    
-    # run llm
-    classify = dspy.Predict(make_ae_classifier(label_list[0],label_list[1]))
-    result = classify(sentence=sentence)
-
-    # return results
-    return {'sentence':sentence, 'effect':result['effect'], 'confidence':result['confidence']}
-
-
-
-
 # function to call dspy 'classifier'
 def detect_generic_effect(sentence:str, label_list:list) -> dict:
     """Detect adverse effect within a sentence
@@ -94,70 +46,6 @@ def detect_generic_effect(sentence:str, label_list:list) -> dict:
     
     # run llm
     classify = dspy.Predict(make_generic_classifier(label_list[0],label_list[1]))
-    result = classify(sentence=sentence)
-
-    # return results
-    return {'sentence':sentence, 'effect':result['effect'], 'confidence':result['confidence']}
-
-
-
-def detect_treatment_safety(sentence:str, label_list:list) -> dict:
-    """Detect treatement safety within a sentence
-
-    Args:
-        - sentence (str) : input data, parsed by the llm
-
-    Return:
-        - (dict) : contains the following keys :
-            * sentence : input sentence
-            * effect : can be mention treatment safety / does not mention treatment safety
-            * confidence : confidence of the classication
-    """
-    
-    # run llm
-    classify = dspy.Predict(TreatmentSafety(labels=label_list))
-    result = classify(sentence=sentence)
-
-    # return results
-    return {'sentence':sentence, 'effect':result['effect'], 'confidence':result['confidence']}
-
-
-def detect_risk_factor(sentence:str) -> dict:
-    """Detect risk factor within a sentence
-
-    Args:
-        - sentence (str) : input data, parsed by the llm
-
-    Return:
-        - (dict) : contains the following keys :
-            * sentence : input sentence
-            * effect : can be mention risk factor / does not mention risk factor
-            * confidence : confidence of the classication
-    """
-    
-    # run llm
-    classify = dspy.Predict(RiskFactor)
-    result = classify(sentence=sentence)
-
-    # return results
-    return {'sentence':sentence, 'effect':result['effect'], 'confidence':result['confidence']}
-
-
-def detect_drug_effect(sentence:str) -> dict:
-    """Detect drug effect within a sentence
-
-    Args:
-        - sentence (str) : input data, parsed by the llm
-
-    Return:
-        - (dict) : contains the following keys :
-            * sentence : input sentence
-            * effect : can be mention drug effect / does not mention drug effect
-            * confidence : confidence of the classication
-    """
-    
-    # run llm
-    classify = dspy.Predict(DrugEffect)
     result = classify(sentence=sentence)
 
     # return results
@@ -489,6 +377,39 @@ def test_all_agent_configuration():
         agent_run_config['TS'] = agent_configuration['TS'][ts_configuration]
         agent_run_config['RF'] = agent_configuration['RF'][1]
         agent_run_config['DE'] = agent_configuration['DE'][1]
+
+        # run
+        output_file = f"agent_benchmark/ts_config_{ae_configuration}_score.csv"
+        evaluate_adverse_effect_detection(model, treshold, agent_run_config, output_file)
+
+    #----------------------------------#
+    # Adverse Risk Factor Optimisation #
+    #----------------------------------#
+    for rf_configuration in agent_configuration['RF']:
+
+        # setup config
+        agent_run_config = {}
+        agent_run_config['AE'] = agent_configuration['AE'][1]
+        agent_run_config['TS'] = agent_configuration['TS'][1]
+        agent_run_config['RF'] = agent_configuration['RF'][rf_configuration]
+        agent_run_config['DE'] = agent_configuration['DE'][1]
+
+        # run
+        output_file = f"agent_benchmark/ts_config_{ae_configuration}_score.csv"
+        evaluate_adverse_effect_detection(model, treshold, agent_run_config, output_file)
+
+
+    #----------------------------------#
+    # Adverse Drug Effect Optimisation #
+    #----------------------------------#
+    for de_configuration in agent_configuration['DE']:
+
+        # setup config
+        agent_run_config = {}
+        agent_run_config['AE'] = agent_configuration['AE'][1]
+        agent_run_config['TS'] = agent_configuration['TS'][1]
+        agent_run_config['RF'] = agent_configuration['RF'][1]
+        agent_run_config['DE'] = agent_configuration['DE'][de_configuration]
 
         # run
         output_file = f"agent_benchmark/ts_config_{ae_configuration}_score.csv"

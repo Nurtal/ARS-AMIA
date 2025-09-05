@@ -1,3 +1,18 @@
 ID,LABEL1,LABEL2
 1,mention risk factor,does not mention risk factor
 2,risk factor,no risk factor
+3,risk factor present,risk factor absent
+4,risk factor observed,no risk factor observed
+5,risk factor detected,risk factor not detected
+6,risk factor reported,no risk factor reported
+7,risk factor mentioned,risk factor not mentioned
+8,mentions risk factor,does not mention risk factor
+9,shows risk factor,shows no risk factor
+10,with risk factor,without risk factor
+11,risk factor found,risk factor not found
+12,risk factor recorded,no risk factor recorded
+13,risk factor present in text,risk factor absent from text
+14,risk factor identified,risk factor not identified
+15,risk factor indicated,risk factor not indicated
+16,positive for risk factor,negative for risk factor
+17,contains risk factor,does not contain risk factor

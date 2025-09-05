@@ -1,4 +1,14 @@
 ID,LABEL1,LABEL2
 1,adverse effect,no adverse effect
-2,adverse effect detected,no adverse effect detected
-3,mention adverse effect, no mention of adverse effect
+2,side effect present,no side effect
+3,adverse reaction,no adverse reaction
+4,toxicity observed,no toxicity
+5,harmful effect,no harmful effect
+7,safety issue,no safety issue
+8,treatment complication,no complication
+9,negative outcome,no negative outcome
+10,unwanted effect,no unwanted effect
+11,adverse event,no adverse event
+13,reaction detected,no reaction
+14,medical concern,no concern
+15,effect observed,no effect observed
