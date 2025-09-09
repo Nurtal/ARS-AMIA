@@ -379,7 +379,7 @@ def test_all_agent_configuration():
         agent_run_config['DE'] = agent_configuration['DE'][1]
 
         # run
-        output_file = f"agent_benchmark/ts_config_{ae_configuration}_score.csv"
+        output_file = f"agent_benchmark/ts_config_{ts_configuration}_score.csv"
         evaluate_adverse_effect_detection(model, treshold, agent_run_config, output_file)
 
     #----------------------------------#
@@ -395,7 +395,7 @@ def test_all_agent_configuration():
         agent_run_config['DE'] = agent_configuration['DE'][1]
 
         # run
-        output_file = f"agent_benchmark/ts_config_{ae_configuration}_score.csv"
+        output_file = f"agent_benchmark/rf_config_{rf_configuration}_score.csv"
         evaluate_adverse_effect_detection(model, treshold, agent_run_config, output_file)
 
 
@@ -412,7 +412,7 @@ def test_all_agent_configuration():
         agent_run_config['DE'] = agent_configuration['DE'][de_configuration]
 
         # run
-        output_file = f"agent_benchmark/ts_config_{ae_configuration}_score.csv"
+        output_file = f"agent_benchmark/de_config_{de_configuration}_score.csv"
         evaluate_adverse_effect_detection(model, treshold, agent_run_config, output_file)
 
 
