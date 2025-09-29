@@ -416,6 +416,26 @@ def test_all_agent_configuration():
         evaluate_adverse_effect_detection(model, treshold, agent_run_config, output_file)
 
 
+
+
+
+def run_with_configuration(agent_run_config, output_file):
+    """ """
+
+    # configure llm
+    model = "qwen3"
+    treshold = 1.5
+    lm = dspy.LM(f"ollama_chat/{model}", api_base="http://localhost:11434", api_key="")
+    dspy.configure(lm=lm)
+
+    # run
+    evaluate_adverse_effect_detection(model, treshold, agent_run_config, output_file)
+
+
+
+
+
+
 if __name__ == "__main__":
 
     # configure llm
@@ -426,5 +446,15 @@ if __name__ == "__main__":
     
     # run
     # evaluate_adverse_effect_detection(model, treshold)
-    test_all_agent_configuration()
+    # test_all_agent_configuration()
+
+    # run with specific configuration
+    output_file = "results/score_with_optimal_config.csv"
+    agent_run_config = {
+        'AE':['effect observed', 'no effect observed'],
+        'TS':['mention treatment safety', 'does not mention treatment safety'],
+        'RF':['mention risk factor', 'does not mention risk factor'],
+        'DE':['mention drug effect', 'does not mention drug effect']
+    }
+    run_with_configuration(agent_run_config, output_file)
 
