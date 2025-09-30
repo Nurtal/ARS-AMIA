@@ -169,7 +169,102 @@ def compute_sentence_score(sentence:str, agent_configuration:dict) -> float:
 
     # return score
     return score
-        
+
+
+def evaluate_item_detection(agent_configuration:dict, result_file:str) -> dict:
+    """Evaluate itelm detection on synthetic data
+    Save results in a csv file, return a dictionnary
+
+    Args:
+        - agent_cionfiguration (dict) : configuration for each agent
+        - result_file (str) : path to save results
+
+    Returns:
+        - (dict) : item to F1 score
+    
+    """
+
+    # load data - extract labels
+    item_to_labels = {}
+    item_to_predicted_labels = {}
+    df = pd.read_csv("data/synthetic_enriched.csv")
+    for index, row, in df.iterrows():
+
+        # extract infos
+        title = row['title']
+        abstract = row['abstract']
+        ae = row['adverse_observed']
+        ts = row['treatment_safety']
+        rf = row['risk_factor']
+        de = row['drug_effect']
+        am = row['animal_model']
+
+        # update labels
+        if 'AE' not in item_to_labels:
+            item_to_labels['AE'] = [ae]
+        else:
+            item_to_labels['AE'].append(ae)
+        if 'TS' not in item_to_labels:
+            item_to_labels['TS'] = [ts]
+        else:
+            item_to_labels['TS'].append(ts)
+        if 'RF' not in item_to_labels:
+            item_to_labels['RF'] = [rf]
+        else:
+            item_to_labels['RF'].append(rf)
+        if 'DE' not in item_to_labels:
+            item_to_labels['DE'] = [de]
+        else:
+            item_to_labels['DE'].append(de)
+        if 'AM' not in item_to_labels:
+            item_to_labels['AM'] = [am]
+        else:
+            item_to_labels['AM'].append(am)
+
+        # craft text
+        text = f"{title}\n {abstract}"
+
+        # run prediction
+        item_to_prediction = {}
+        for agent in list(agent_configuration.keys()):
+            try:
+                item_to_prediction[agent] = detect_generic_effect(text, agent_configuration[agent]) 
+            except:
+                item_to_prediction[agent] = {'effect':'NA'}
+
+            # intepreate and save prediction
+            if agent not in item_to_predicted_labels:
+                item_to_predicted_labels[agent] = []
+            pos_label = agent_configuration[agent][0]
+            neg_label = agent_configuration[agent][1]
+            if item_to_prediction[agent]["effect"] == pos_label:
+                item_pred = 1
+            elif item_to_prediction[agent]["effect"] == neg_label:
+                item_pred = 0
+            else:
+                item_pred = 0
+            item_to_predicted_labels[agent].append(item_pred)
+
+    # compute F1 score
+    item_to_score = {}
+    for item in list(item_to_predicted_labels.keys()):
+
+        # compute
+        predictions = item_to_predicted_labels[item]
+        labels = item_to_labels[item]
+        score = f1_score(labels, predictions)
+
+        # save
+        item_to_score[item] = score
+    
+    # save results
+    output_data = open(result_file, "w")
+    output_data.write(f"ITEM,F1-SCORE\n")
+    for k in list(item_to_score.keys()):
+        output_data.write(f"{k},{item_to_score[k]}\n")
+    output_data.close()
+    
+    return item_to_score
     
 
 def evaluate_adverse_effect_detection(model_name, score_treshold, agent_configuration, output_file):
@@ -449,12 +544,15 @@ if __name__ == "__main__":
     # test_all_agent_configuration()
 
     # run with specific configuration
-    output_file = "results/score_with_optimal_config.csv"
+    # output_file = "results/score_with_optimal_config.csv"
     agent_run_config = {
         'AE':['effect observed', 'no effect observed'],
         'TS':['mention treatment safety', 'does not mention treatment safety'],
         'RF':['mention risk factor', 'does not mention risk factor'],
         'DE':['mention drug effect', 'does not mention drug effect']
     }
-    run_with_configuration(agent_run_config, output_file)
 
+
+    
+    # run_with_configuration(agent_run_config, output_file)
+    evaluate_item_detection(agent_run_config, "results/item_detection.csv")
